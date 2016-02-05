@@ -7,8 +7,8 @@ import java.util.List;
  * Created by asam82 on 2016-02-03.
  */
 public class TestSubTyping {
-    Polygon[] parray;
-    Triangle[] tarray;
+    static Polygon[] parray;
+    static Triangle[] tarray;
     static List<Polygon> plist = new ArrayList<>(10);;
     static List<Triangle> tlist = new ArrayList<>(10);;
     static List<Object> olist = new ArrayList<Object>(10);
@@ -29,11 +29,38 @@ public class TestSubTyping {
             to.add(i, from.get(i));
         }
     }
+
+    static void moveArrayElements(Polygon[] from, Polygon[] to){
+        for (int i = 0; i < to.length; i++){
+            to[i] = from[i];
+        }
+    }
+
     public static void main(String[] args) {
+        parray = new Polygon[10];
+        tarray = new Triangle[10];
+
+        for(int i = 0; i < 10; i++){
+            parray[i] = new Polygon(1,1);
+            tarray[i] = new Triangle();
+        }
         moveElements(tlist, plist);
-        moveElements(plist,tlist);
+//        moveElements(plist,tlist);
         moveElements(extendspolygon, superpolygon);
-        moveElements(superpolygon, extendspolygon);
+//        moveElements(superpolygon, extendspolygon);
+//        moveArrayElements(tarray, parray);
+        moveArrayElements(parray, tarray); // should this really work at
+        // runtime? Now we will get polygons in the triangle array
+
+        Triangle[] tarray2;
+
+        tarray2 = tarray;
+        Triangle t = tarray[1]; // and since tarray now contains
+        // polygons?, we will get a polygon assigned to a triangle variable
+        t = parray[0];
+
+
+
     }
 
 
