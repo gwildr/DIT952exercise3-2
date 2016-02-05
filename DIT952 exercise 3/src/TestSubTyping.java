@@ -37,6 +37,9 @@ public class TestSubTyping {
     }
 
     public static void main(String[] args) {
+        Triangle truetriangle = new Triangle();
+        truetriangle.triangleMethod();
+
         parray = new Polygon[10];
         tarray = new Triangle[10];
 
@@ -44,9 +47,9 @@ public class TestSubTyping {
             parray[i] = new Polygon(1,1);
             tarray[i] = new Triangle();
         }
-        moveElements(tlist, plist);
-//        moveElements(plist,tlist);
-        moveElements(extendspolygon, superpolygon);
+//        moveElements(tlist, plist);
+////        moveElements(plist,tlist);
+//        moveElements(extendspolygon, superpolygon);
 //        moveElements(superpolygon, extendspolygon);
 //        moveArrayElements(tarray, parray);
         moveArrayElements(parray, tarray); // should this really work at
@@ -55,9 +58,11 @@ public class TestSubTyping {
         Triangle[] tarray2;
 
         tarray2 = tarray;
-        Triangle t = tarray[1]; // and since tarray now contains
+        Triangle falsetriangle = tarray[1]; // and since tarray now contains
         // polygons?, we will get a polygon assigned to a triangle variable
-        t = parray[0];
+        falsetriangle.triangleMethod();
+
+//        t = parray[0];
 
 
 
