@@ -7,6 +7,9 @@ public class Triangle extends Polygon {
     Triangle(int x, int y) {
         super(x,y);
     }
+    Triangle(){
+        super(0,0);
+    }
 
    @Override
     public void paint(Graphics g){
